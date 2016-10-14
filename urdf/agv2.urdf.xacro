@@ -30,7 +30,7 @@
 
   <property name="base_z" value="0.0" />
   <link name="base_link">
-    <xacro:box_inertial mass="0.1" x="0.7" y="1.12" z="${base_z}">
+    <xacro:box_inertial mass="50" x="0.7" y="1.12" z="${base_z}">
       <origin rpy="0 0 ${M_PI/2}" xyz="0 0 0" />
     </xacro:box_inertial>
     <visual>
@@ -52,10 +52,10 @@
   <property name="BASE_R" value="0.251"/>
   <property name="BASE_DUMMY_R" value="0.225"/>
   <property name="drive_wheel_r" value="0.08" />
-  <xacro:wheel name="lf_wheel" parent="base_link" radius="${drive_wheel_r}" width="0.05">
+  <xacro:wheel name="l_wheel" parent="base_link" radius="${drive_wheel_r}" width="0.05">
     <origin rpy="-6.123E-17 0 0" xyz="${BASE_R} 0.0 ${drive_wheel_r - agv_height/2 - hollow_h}" />
   </xacro:wheel>
-  <xacro:wheel name="rf_wheel" parent="base_link" radius="${drive_wheel_r}" width="0.05">
+  <xacro:wheel name="r_wheel" parent="base_link" radius="${drive_wheel_r}" width="0.05">
     <origin rpy="-6.123E-17 0 0" xyz="${BASE_R*-1} 0.0 ${drive_wheel_r - agv_height/2 - hollow_h}" />
   </xacro:wheel>
 
