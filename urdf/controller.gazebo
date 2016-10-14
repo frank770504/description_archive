@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<robot>
+
+  <!-- ros_control plugin -->
+<!--
+  <gazebo>
+    <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
+      <robotNamespace>/agv2</robotNamespace>
+      <robotSimType>gazebo_ros_control/DefaultRobotHWSim</robotSimType>
+    </plugin>
+  </gazebo>
+-->
+
+<!--
+  <gazebo>
+    <plugin name="GazeboPlugin" filename="lib_gazebo_plugin.so"/>
+  </gazebo>
+-->
+
+<!--
+  <gazebo>
+    <plugin name="differential_drive_controller" filename="libgazebo_ros_diff_drive.so">
+      <alwaysOn>true</alwaysOn>
+      <updateRate>100.0</updateRate>
+      <leftJoint>r_wheel_joint</leftJoint>
+      <rightJoint>l_wheel_joint</rightJoint>
+      <wheelSeparation>${BASE_R*2}</wheelSeparation>
+      <wheelDiameter>0.25</wheelDiameter>
+      <torque>1000</torque>
+      <commandTopic>cmd_vel</commandTopic>
+      <odometryTopic>odom</odometryTopic>
+      <odometryFrame>odom</odometryFrame>
+      <robotBaseFrame>base_link</robotBaseFrame>
+      <robotNamespace>/htcbot</robotNamespace>
+    </plugin>
+  </gazebo>
+-->
+
+</robot>

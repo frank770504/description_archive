@@ -1,0 +1,94 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro"
+       name="agv2" >
+
+  <!-- common stuff -->
+  <xacro:include filename="$(find agv2_description)/urdf/agv2.gazebo.xacro" />
+  <xacro:include filename="$(find agv2_description)/urdf/common.xacro" />
+  <xacro:include filename="$(find agv2_description)/urdf/materials.urdf.xacro" />
+  <xacro:include filename="$(find agv2_description)/urdf/controller.gazebo" />
+  <xacro:include filename="$(find agv2_description)/urdf/wheel_agv.urdf.xacro" />
+<!--
+  <xacro:include filename="$(find agv2_description)/urdf/sensors.urdf.xacro" />
+-->
+<!--
+  <xacro:include filename="$(find agv2_description)/urdf/sensors.gazebo.xacro" />
+-->
+
+  <link name="base_footprint"/>
+
+  <!-- Base -->
+  <property name="agv_height" value="0.268" />
+  <property name="hollow_h" value="0.01" />
+  <joint name="base_joint" type="fixed">
+    <axis xyz="0 0 1"/>
+    <limit effort="1000.0" velocity="0.5"/>
+    <origin xyz="0 0 ${agv_height/2 + hollow_h}" rpy="0 0 0" />
+    <parent link="base_footprint"/>
+    <child link="base_link" />
+  </joint>
+
+  <property name="base_z" value="0.0" />
+  <link name="base_link">
+    <xacro:box_inertial mass="0.1" x="0.7" y="1.12" z="${base_z}">
+      <origin rpy="0 0 ${M_PI/2}" xyz="0 0 0" />
+    </xacro:box_inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 ${M_PI/2}" />
+        <geometry>
+          <mesh filename="package://agv2_description/meshes/agv_black.dae" />
+        </geometry>
+      <material name="YellowRubber"/>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 ${M_PI/2}" />
+        <geometry>
+          <mesh filename="package://agv2_description/meshes/agv_black.stl" />
+        </geometry>
+    </collision>
+  </link>
+
+  <!-- wheel -->
+  <property name="BASE_R" value="0.251"/>
+  <property name="BASE_DUMMY_R" value="0.225"/>
+  <property name="drive_wheel_r" value="0.08" />
+  <xacro:wheel name="lf_wheel" parent="base_link" radius="${drive_wheel_r}" width="0.05">
+    <origin rpy="-6.123E-17 0 0" xyz="${BASE_R} 0.0 ${drive_wheel_r - agv_height/2 - hollow_h}" />
+  </xacro:wheel>
+  <xacro:wheel name="rf_wheel" parent="base_link" radius="${drive_wheel_r}" width="0.05">
+    <origin rpy="-6.123E-17 0 0" xyz="${BASE_R*-1} 0.0 ${drive_wheel_r - agv_height/2 - hollow_h}" />
+  </xacro:wheel>
+
+  <xacro:dummy_wheel name="lf_wheel" parent="base_link">
+    <origin rpy="-6.123E-17 0 0" xyz="${BASE_DUMMY_R} ${0.4275 + shaft_w/2 - 0.01} ${shaft_h/2 + dummy_r - agv_height/2 - hollow_h}" />
+  </xacro:dummy_wheel>
+  <xacro:dummy_wheel name="rf_wheel" parent="base_link">
+    <origin rpy="-6.123E-17 0 0" xyz="${BASE_DUMMY_R*-1} ${0.4275 + shaft_w/2 - 0.01}  ${shaft_h/2 + dummy_r - agv_height/2 - hollow_h}" />
+  </xacro:dummy_wheel>
+  <xacro:dummy_wheel name="lr_wheel" parent="base_link">
+    <origin rpy="-6.123E-17 0 0" xyz="${BASE_DUMMY_R} ${-0.42475 + shaft_w/2 - 0.01}  ${shaft_h/2 + dummy_r - agv_height/2 - hollow_h}" />
+  </xacro:dummy_wheel>
+  <xacro:dummy_wheel name="rr_wheel" parent="base_link">
+    <origin rpy="-6.123E-17 0 0" xyz="${BASE_DUMMY_R*-1} ${-0.42475 + shaft_w/2 - 0.01} ${shaft_h/2 + dummy_r - agv_height/2 - hollow_h}" />
+  </xacro:dummy_wheel>
+<!--
+  <joint name="screen_joint" type="fixed"> ${drive_wheel_r - agv_height/2 - hollow_h} ${shaft_h + dummy_r - agv_height/2 - hollow_h}
+    <axis xyz="0 0 1"/>
+    <limit effort="1000.0" lower="-3.1415" upper="3.1415" velocity="0.5"/>
+    <origin xyz="0 -0.01 0.3" rpy="${0.1745*6} 0 0"/>
+    <parent link="chest_link"/>
+    <child link="screen_link"/>
+  </joint>
+
+  <link name="screen_link">
+    <visual>
+      <origin xyz="0 -0.055 0" rpy="0 0 0" />
+      <geometry>
+        <cylinder length="0.01" radius="0.09"/>
+      </geometry>
+      <material name="Orange"/>
+    </visual>
+  </link>
+-->
+
+</robot>

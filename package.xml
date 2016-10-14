@@ -1,0 +1,33 @@
+<package>
+  <name>agv2_description</name>
+  <version>0.6.3</version>
+  <description>This package contains the description (mechanical, kinematic, visual,
+  etc.) of the agv2. The files in this package are parsed and used by
+  a variety of other components. Most users will not interact directly
+  with this package.</description>
+
+  <license>LGPL</license>
+
+  <url type="website">http://ros.org/</url>
+  <!-- <url type="bugtracker"></url> -->
+
+  <maintainer email="frankYW_chen@compal.com">Frank Chen</maintainer>
+  <author email="frankYW_chen@compal.com">Frank Chen</author>
+
+  <buildtool_depend>catkin</buildtool_depend>
+
+  <build_depend>liburdfdom-tools</build_depend>
+  <build_depend>roscpp</build_depend>
+  <build_depend>roslib</build_depend>
+  <build_depend>std_msgs</build_depend>
+  <build_depend>roslint</build_depend>
+  <build_depend>urdf</build_depend>
+  <build_depend>message_generation</build_depend>
+  <run_depend>roscpp</run_depend>
+  <run_depend>roslib</run_depend>
+  <run_depend>std_msgs</run_depend>
+  <run_depend>roslint</run_depend>
+  <run_depend>urdf</run_depend>
+  <run_depend>message_runtime</run_depend>
+
+</package>
