@@ -51,7 +51,10 @@
     <kd>10.0</kd>
     <mu1>10</mu1>
     <mu2>10</mu2>
+    <material>Gazebo/RedTransparent</material>
+<!--
     <material>Gazebo/WoodPallet</material>
+-->
   </gazebo>
 
   <gazebo reference="ground_plane">
