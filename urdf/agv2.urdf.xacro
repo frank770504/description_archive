@@ -8,12 +8,8 @@
   <xacro:include filename="$(find agv2_description)/urdf/materials.urdf.xacro" />
   <xacro:include filename="$(find agv2_description)/urdf/controller.gazebo" />
   <xacro:include filename="$(find agv2_description)/urdf/wheel_agv.urdf.xacro" />
-<!--
-  <xacro:include filename="$(find agv2_description)/urdf/sensors.urdf.xacro" />
--->
-<!--
-  <xacro:include filename="$(find agv2_description)/urdf/sensors.gazebo.xacro" />
--->
+  <xacro:include filename="$(find agv2_description)/urdf/laser.urdf.xacro" />
+  <xacro:include filename="$(find agv2_description)/urdf/laser.gazebo.xacro" />
 
   <link name="base_footprint"/>
 
@@ -28,9 +24,8 @@
     <child link="base_link" />
   </joint>
 
-  <property name="base_z" value="0.0" />
   <link name="base_link">
-    <xacro:box_inertial mass="50" x="0.7" y="1.12" z="${base_z}">
+    <xacro:box_inertial mass="50" x="0.645" y="1.099" z="0.28">
       <origin rpy="0 0 ${M_PI/2}" xyz="0 0 0" />
     </xacro:box_inertial>
     <visual>
