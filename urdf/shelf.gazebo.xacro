@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<robot>
+  <gazebo reference="base_link">
+    <kp>500000.0</kp>
+    <kd>10.0</kd>
+    <mu1>10</mu1>
+    <mu2>10</mu2>
+    <material>Gazebo/BlueTransparent</material>
+<!--
+    <material>Gazebo/WoodPallet</material>
+-->
+  </gazebo>
+
+  <gazebo reference="ground_plane">
+     <surface>
+        <friction>
+            <ode>
+                <mu>0.8</mu>
+            </ode>
+        </friction>
+        <bounce>
+            <restitution_coefficient>0.0</restitution_coefficient>
+        </bounce>
+        <contact>
+            <ode>
+                <kp>50000</kp>
+                <kd>5000</kd>
+                <max_vel>0</max_vel>
+            </ode>
+        </contact>
+    </surface>
+  </gazebo>
+</robot>
