@@ -25,9 +25,16 @@
   </joint>
 
   <link name="base_link">
+<!--
     <xacro:box_inertial mass="50" x="0.645" y="1.099" z="0.28">
       <origin rpy="0 0 ${M_PI/2}" xyz="0 0 0" />
     </xacro:box_inertial>
+-->
+    <inertial>
+      <origin rpy="0 0 ${M_PI/2}" xyz="0 0 0"/>
+      <mass value="50.0"/>
+      <inertia ixx="0.007081" ixy="-0.000118" ixz="-7.4538e-07" iyy="0.017373" iyz="0.000001" izz="0.022258"/>
+    </inertial>
     <visual>
       <origin xyz="0 0 0" rpy="0 0 ${M_PI/2}" />
         <geometry>
