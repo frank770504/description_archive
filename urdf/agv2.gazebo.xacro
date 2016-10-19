@@ -56,24 +56,4 @@
     <material>Gazebo/WoodPallet</material>
 -->
   </gazebo>
-
-  <gazebo reference="ground_plane">
-     <surface>
-        <friction>
-            <ode>
-                <mu>0.8</mu>
-            </ode>
-        </friction>
-        <bounce>
-            <restitution_coefficient>0.0</restitution_coefficient>
-        </bounce>
-        <contact>
-            <ode>
-                <kp>50000</kp>
-                <kd>5000</kd>
-                <max_vel>0</max_vel>
-            </ode>
-        </contact>
-    </surface>
-  </gazebo>
 </robot>

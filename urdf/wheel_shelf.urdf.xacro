@@ -31,16 +31,16 @@
   <property name="dummy_r" value="0.0381" />
   <property name="dummy_w" value="0.033" />
   <property name="shaft_h" value="0.0695" />
-  <property name="shaft_w" value="0.033" />
-  <xacro:macro name="dummy_wheel" params="name parent x_loc y_loc">
+  <property name="shaft_w" value="${0.033 + 0.02}" />
+  <xacro:macro name="dummy_wheel" params="name parent x_loc x_dir y_loc y_dir">
     <link name="${name}_shaft_link">
-        <xacro:box_inertial mass="0.1" x="${shaft_w}" y="${dummy_w}" z="${shaft_h}">
+        <xacro:box_inertial mass="4.0" x="${shaft_w}" y="${shaft_w}" z="${shaft_h}">
           <origin rpy="0 0 0" xyz="0 0 0" />
         </xacro:box_inertial>
       <visual>
         <origin rpy="0 0 0" xyz="0 0 0" />
         <geometry>
-          <box size="${shaft_w} ${dummy_w} ${shaft_h}"/>
+          <box size="${shaft_w} ${shaft_w} ${shaft_h}"/>
         </geometry>
         <material name="">
           <color rgba="0.086 0.506 0.767 1" />
@@ -49,7 +49,7 @@
       <collision>
         <origin rpy="0 0 0" xyz="0 0 0" />
         <geometry>
-          <box size="${shaft_w} ${dummy_w} ${shaft_h}"/>
+          <box size="${shaft_w} ${shaft_w} ${shaft_h}"/>
         </geometry>
         <material name="">
           <color rgba="0.086 0.506 0.767 1" />
@@ -57,7 +57,7 @@
       </collision>
     </link>
     <link name="${name}_dummy_wheel">
-        <xacro:cylinder_inertial mass="0.1" radius="${dummy_r}" length="${dummy_w}">
+        <xacro:cylinder_inertial mass="4.0" radius="${dummy_r}" length="${dummy_w}">
           <origin rpy="0 ${M_PI/2} 0" xyz="0 0 0" />
         </xacro:cylinder_inertial>
       <visual>
@@ -77,10 +77,11 @@
       </collision>
     </link>
     <joint name="${name}_joint_shaft" type="continuous">
-      <origin rpy="-6.123E-17 0 0" xyz="${x_loc} ${y_loc + shaft_w/2 - 0.01} 0" />
+      <origin rpy="-6.123E-17 0 0" xyz="${(x_loc - shaft_w/2)*x_dir} ${(y_loc - shaft_w/2)*y_dir} ${(agv_height + 0.01)*-1}" />
       <parent link="${parent}" />
       <child link="${name}_shaft_link" />
       <axis xyz="0 0 1" />
+      <dynamics damping="0.9" friction="0.9" />
     </joint>
     <joint name="${name}_joint_roller" type="continuous">
       <origin xyz="0 ${shaft_w/2} ${-shaft_h/2}" rpy="0 0 0" />
@@ -89,18 +90,20 @@
       <axis xyz="1 0 0" />
     </joint>
     <gazebo reference="${name}_dummy_wheel">
-      <kp>500000.0</kp>
-      <kd>10.0</kd>
-      <mu1>0.01</mu1>
-      <mu2>0.01</mu2>
+      <kp>1000000000.0</kp>
+      <kd>500000.0</kd>
+      <mu1>1000.0</mu1>
+      <mu2>500.0</mu2>
+      <fdir1>1 0 0</fdir1>
     </gazebo>
     <gazebo reference="${name}_shaft_link">
-      <mu1>50</mu1>
-      <mu2>10</mu2>
-<!--
-      <dampingFactor>0.1</dampingFactor> ${shaft_h/2 + dummy_r - agv_height/2 - hollow_h}
--->
+      <kp>1000000000.0</kp>
+      <kd>500000.0</kd>
+      <mu1>1.0</mu1>
+      <mu2>1.0</mu2>
       <fdir1>0 0 1</fdir1>
+      <material>Gazebo/RedTransparent</material>
+      <dampingFactor>0.2</dampingFactor>
     </gazebo>
   </xacro:macro>
 </robot>
