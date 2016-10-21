@@ -50,6 +50,34 @@
     </collision>
   </link>
 
+  <!-- rod -->
+  <joint name="rod_joint" type="prismatic">
+    <axis xyz="0 1 0"/>
+    <limit effort="1000.0" velocity="0.5"/>
+    <origin xyz="0 0.42475 ${agv_height/2 - rod_h/2}" rpy="0 0 0" />
+    <parent link="base_link"/>
+    <child link="rod_link" />
+  </joint>
+
+  <property name="rod_r" value="0.0136" />
+  <property name="rod_h" value="0.060" />
+  <link name="rod_link">
+        <xacro:cylinder_inertial mass="0.1" radius="${rod_r}" length="${rod_h}">
+          <origin rpy="0 0 0" xyz="0 0 0" />
+        </xacro:cylinder_inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+          <cylinder length="${rod_h}" radius="${rod_r}"/>
+        </geometry>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+          <cylinder length="${rod_h}" radius="${rod_r}"/>
+        </geometry>
+    </collision>
+  </link>
   <!-- wheel -->
   <property name="BASE_R" value="0.251"/>
   <property name="BASE_DUMMY_R" value="0.225"/>
