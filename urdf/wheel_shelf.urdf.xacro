@@ -90,20 +90,17 @@
       <axis xyz="1 0 0" />
     </joint>
     <gazebo reference="${name}_dummy_wheel">
-      <kp>1000000000.0</kp>
-      <kd>500000.0</kd>
-      <mu1>1000.0</mu1>
-      <mu2>500.0</mu2>
-      <fdir1>1 0 0</fdir1>
+      <kp>500000.0</kp>
+      <kd>10.0</kd>
+      <mu1>0.01</mu1>
+      <mu2>0.01</mu2>
+      <material>Gazebo/WoodPallet</material>
     </gazebo>
     <gazebo reference="${name}_shaft_link">
-      <kp>1000000000.0</kp>
-      <kd>500000.0</kd>
-      <mu1>1.0</mu1>
-      <mu2>1.0</mu2>
+      <mu1>50</mu1>
+      <mu2>10</mu2>
+      <dampingFactor>0.1</dampingFactor>
       <fdir1>0 0 1</fdir1>
-      <material>Gazebo/RedTransparent</material>
-      <dampingFactor>0.2</dampingFactor>
     </gazebo>
   </xacro:macro>
 </robot>
