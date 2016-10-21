@@ -9,11 +9,9 @@
     </plugin>
   </gazebo>
 
-<!--
   <gazebo>
     <plugin name="GazeboPlugin" filename="lib_gazebo_plugin.so"/>
   </gazebo>
--->
 
   <gazebo>
     <plugin name="differential_drive_controller" filename="libgazebo_ros_diff_drive.so">
