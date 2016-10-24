@@ -10,7 +10,7 @@
   </gazebo>
 
   <gazebo>
-    <plugin name="GazeboPlugin" filename="lib_gazebo_plugin.so"/>
+    <plugin name="AGV2GazeboPlugin" filename="libcompal_gazebo_plugin.so"/>
   </gazebo>
 
   <gazebo>
