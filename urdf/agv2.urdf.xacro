@@ -50,18 +50,44 @@
     </collision>
   </link>
 
-  <!-- rod -->
+  <!-- rod front -->
   <property name="rod_r" value="0.0136" />
   <property name="rod_h" value="0.060" />
-  <joint name="rod_joint" type="prismatic">
+  <joint name="rod_front_joint" type="prismatic">
     <axis xyz="0 0 1"/>
     <limit effort="1000.0" velocity="0.5" lower="0" upper="${rod_h}"/>
-    <origin xyz="0 0.42475 ${agv_height/2 - rod_h/2}" rpy="0 0 0" />
+    <origin xyz="0 -0.398 ${agv_height/2 - rod_h/2}" rpy="0 0 0" />
     <parent link="base_link"/>
-    <child link="rod_link" />
+    <child link="rod_front_link" />
   </joint>
 
-  <link name="rod_link">
+  <link name="rod_front_link">
+        <xacro:cylinder_inertial mass="0.1" radius="${rod_r}" length="${rod_h}">
+          <origin rpy="0 0 0" xyz="0 0 0" />
+        </xacro:cylinder_inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+          <cylinder length="${rod_h}" radius="${rod_r}"/>
+        </geometry>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+          <cylinder length="${rod_h}" radius="${rod_r}"/>
+        </geometry>
+    </collision>
+  </link>
+  <!-- rod rares -->
+  <joint name="rod_rare_joint" type="prismatic">
+    <axis xyz="0 0 1"/>
+    <limit effort="1000.0" velocity="0.5" lower="0" upper="${rod_h}"/>
+    <origin xyz="0 0.340 ${agv_height/2 - rod_h/2}" rpy="0 0 0" />
+    <parent link="base_link"/>
+    <child link="rod_rare_link" />
+  </joint>
+
+  <link name="rod_rare_link">
         <xacro:cylinder_inertial mass="0.1" radius="${rod_r}" length="${rod_h}">
           <origin rpy="0 0 0" xyz="0 0 0" />
         </xacro:cylinder_inertial>
@@ -99,15 +125,25 @@
   </xacro:dummy_wheel>
 
   <!-- Transmission -->
-  <transmission name="rod_tran">
+  <transmission name="rod_front_tran">
     <type>transmission_interface/SimpleTransmission</type>
-    <joint name="rod_joint">
+    <joint name="rod_front_joint">
       <hardwareInterface>EffortJointInterface</hardwareInterface>
     </joint>
-    <actuator name="rod_linear_motor">
+    <actuator name="rod_front_linear_motor">
       <hardwareInterface>EffortJointInterface</hardwareInterface>
       <mechanicalReduction>1</mechanicalReduction>
     </actuator>
   </transmission>
 
+  <transmission name="rod_rare_tran">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="rod_rare_joint">
+      <hardwareInterface>EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="rod_rare_linear_motor">
+      <hardwareInterface>EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
 </robot>
