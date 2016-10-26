@@ -97,24 +97,17 @@
   </xacro:dummy_wheel>
   <xacro:dummy_wheel name="rr_wheel" parent="base_link" x_loc="${BASE_DUMMY_R*-1}" y_loc="-0.42475">
   </xacro:dummy_wheel>
-<!--
-  <joint name="screen_joint" type="fixed"> ${drive_wheel_r - agv_height/2 - hollow_h} ${shaft_h + dummy_r - agv_height/2 - hollow_h}
-    <axis xyz="0 0 1"/>
-    <limit effort="1000.0" lower="-3.1415" upper="3.1415" velocity="0.5"/>
-    <origin xyz="0 -0.01 0.3" rpy="${0.1745*6} 0 0"/>
-    <parent link="chest_link"/>
-    <child link="screen_link"/>
-  </joint>
 
-  <link name="screen_link">
-    <visual>
-      <origin xyz="0 -0.055 0" rpy="0 0 0" />
-      <geometry>
-        <cylinder length="0.01" radius="0.09"/>
-      </geometry>
-      <material name="Orange"/>
-    </visual>
-  </link>
--->
+  <!-- Transmission -->
+  <transmission name="rod_tran">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="rod_joint">
+      <hardwareInterface>EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="rod_linear_motor">
+      <hardwareInterface>EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
 
 </robot>
