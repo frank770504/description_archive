@@ -78,16 +78,16 @@
         </geometry>
     </collision>
   </link>
-  <!-- rod rares -->
-  <joint name="rod_rare_joint" type="prismatic">
+  <!-- rod rears -->
+  <joint name="rod_rear_joint" type="prismatic">
     <axis xyz="0 0 1"/>
     <limit effort="1000.0" velocity="0.5" lower="0" upper="${rod_h}"/>
     <origin xyz="0 0.340 ${agv_height/2 - rod_h/2}" rpy="0 0 0" />
     <parent link="base_link"/>
-    <child link="rod_rare_link" />
+    <child link="rod_rear_link" />
   </joint>
 
-  <link name="rod_rare_link">
+  <link name="rod_rear_link">
         <xacro:cylinder_inertial mass="0.1" radius="${rod_r}" length="${rod_h}">
           <origin rpy="0 0 0" xyz="0 0 0" />
         </xacro:cylinder_inertial>
@@ -136,12 +136,12 @@
     </actuator>
   </transmission>
 
-  <transmission name="rod_rare_tran">
+  <transmission name="rod_rear_tran">
     <type>transmission_interface/SimpleTransmission</type>
-    <joint name="rod_rare_joint">
+    <joint name="rod_rear_joint">
       <hardwareInterface>EffortJointInterface</hardwareInterface>
     </joint>
-    <actuator name="rod_rare_linear_motor">
+    <actuator name="rod_rear_linear_motor">
       <hardwareInterface>EffortJointInterface</hardwareInterface>
       <mechanicalReduction>1</mechanicalReduction>
     </actuator>
