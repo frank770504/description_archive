@@ -2,9 +2,9 @@
 <robot>
   <!-- laser range finder -->
   <gazebo reference="laser_link">
-    <sensor type="ray" name="agv_laser_sensor">
+    <sensor type="gpu_ray" name="agv_laser_sensor">
       <pose>0 0 0 0 0 0</pose>
-      <visualize>false</visualize>
+      <visualize>true</visualize>
       <update_rate>40</update_rate>
       <ray>
         <scan>
@@ -30,7 +30,7 @@
           <stddev>0.01</stddev>
         </noise>
       </ray>
-      <plugin name="gazebo_ros_laser_controller" filename="libgazebo_ros_laser.so">
+      <plugin name="gazebo_ros_laser_controller" filename="libgazebo_ros_gpu_laser.so">
         <topicName>/agv2/laser/scan</topicName>
         <frameName>laser_link</frameName>
       </plugin>
