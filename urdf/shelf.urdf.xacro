@@ -6,14 +6,11 @@
   <xacro:include filename="$(find agv2_description)/urdf/shelf.gazebo.xacro" />
   <xacro:include filename="$(find agv2_description)/urdf/common.xacro" />
   <xacro:include filename="$(find agv2_description)/urdf/materials.urdf.xacro" />
-<!--
-  <xacro:include filename="$(find agv2_description)/urdf/controller.gazebo" />
--->
   <xacro:include filename="$(find agv2_description)/urdf/wheel_shelf.urdf.xacro" />
-<!--
-  <xacro:include filename="$(find agv2_description)/urdf/laser.urdf.xacro" />
-  <xacro:include filename="$(find agv2_description)/urdf/laser.gazebo.xacro" />
--->
+
+  <gazebo>
+    <plugin name="AGV2GazeboPlugin" filename="libcompal_gazebo_plugin.so"/>
+  </gazebo>
 
   <link name="base_footprint"/>
 
