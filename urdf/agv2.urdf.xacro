@@ -32,7 +32,7 @@
 -->
     <inertial>
       <origin rpy="0 0 ${M_PI/2}" xyz="0 0 0"/>
-      <mass value="50.0"/>
+      <mass value="100.0"/>
       <inertia ixx="0.007081" ixy="-0.000118" ixz="-7.4538e-07" iyy="0.017373" iyz="0.000001" izz="0.022258"/>
     </inertial>
     <visual>
@@ -62,7 +62,7 @@
   </joint>
 
   <link name="rod_front_link">
-        <xacro:cylinder_inertial mass="0.1" radius="${rod_r}" length="${rod_h}">
+        <xacro:cylinder_inertial mass="1.0" radius="${rod_r}" length="${rod_h}">
           <origin rpy="0 0 0" xyz="0 0 0" />
         </xacro:cylinder_inertial>
     <visual>
@@ -88,7 +88,7 @@
   </joint>
 
   <link name="rod_rear_link">
-        <xacro:cylinder_inertial mass="0.1" radius="${rod_r}" length="${rod_h}">
+        <xacro:cylinder_inertial mass="1.0" radius="${rod_r}" length="${rod_h}">
           <origin rpy="0 0 0" xyz="0 0 0" />
         </xacro:cylinder_inertial>
     <visual>
