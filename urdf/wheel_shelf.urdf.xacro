@@ -99,7 +99,7 @@
     <gazebo reference="${name}_shaft_link">
       <mu1>50</mu1>
       <mu2>10</mu2>
-      <dampingFactor>0.1</dampingFactor>
+      <dampingFactor>0.01</dampingFactor>
       <fdir1>0 0 1</fdir1>
     </gazebo>
   </xacro:macro>
