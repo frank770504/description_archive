@@ -7,6 +7,7 @@ find_package(catkin REQUIRED COMPONENTS
   roslib
   std_msgs
   urdf
+  hector_gazebo_plugins
 )
 
 ## Generate added messages and services with any dependencies listed here

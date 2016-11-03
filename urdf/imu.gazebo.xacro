@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<robot>
+  <gazebo reference="imu_link">
+    <kp>500000.0</kp>
+    <kd>10.0</kd>
+    <mu1>100</mu1>
+    <mu2>10</mu2>
+    <minDepth>0.003</minDepth>
+    <material>Gazebo/Grey</material>
+  </gazebo>
+  <gazebo>
+    <plugin name="GazeboRosImu" filename="libhector_gazebo_ros_imu.so">
+      <updateRate>20.0</updateRate>
+      <bodyName>imu_link</bodyName>
+      <topicName>imu_data</topicName>
+      <frameId>imu</frameId>
+    </plugin>
+  </gazebo>
+</robot>
