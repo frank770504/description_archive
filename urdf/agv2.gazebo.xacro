@@ -5,7 +5,7 @@
     <kd>10.0</kd>
     <mu1>100</mu1>
     <mu2>10</mu2>
-    <fdir1>1 0 0</fdir1>
+    <fdir1>0 1 0</fdir1>
     <maxVel>1.0</maxVel>
     <minDepth>0.003</minDepth>
     <material>Gazebo/Grey</material>
@@ -15,7 +15,7 @@
     <kd>10.0</kd>
     <mu1>100</mu1>
     <mu2>10</mu2>
-    <fdir1>1 0 0</fdir1>
+    <fdir1>0 1 0</fdir1>
     <maxVel>1.0</maxVel>
     <minDepth>0.003</minDepth>
     <material>Gazebo/Grey</material>

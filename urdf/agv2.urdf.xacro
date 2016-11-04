@@ -38,14 +38,14 @@
       <inertia ixx="0.007081" ixy="-0.000118" ixz="-7.4538e-07" iyy="0.017373" iyz="0.000001" izz="0.022258"/>
     </inertial>
     <visual>
-      <origin xyz="0 0 0" rpy="0 0 ${M_PI/2}" />
+      <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
           <mesh filename="package://agv2_description/meshes/agv_black.dae" />
         </geometry>
       <material name="YellowRubber"/>
     </visual>
     <collision>
-      <origin xyz="0 0 0" rpy="0 0 ${M_PI/2}" />
+      <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
           <mesh filename="package://agv2_description/meshes/agv_black.stl" />
         </geometry>
@@ -58,7 +58,7 @@
   <joint name="rod_front_joint" type="prismatic">
     <axis xyz="0 0 1"/>
     <limit effort="1000.0" velocity="0.5" lower="0" upper="${rod_h}"/>
-    <origin xyz="0 -0.398 ${agv_height/2 - rod_h/2}" rpy="0 0 0" />
+    <origin xyz="0.340 0 ${agv_height/2 - rod_h/2}" rpy="0 0 0" />
     <parent link="base_link"/>
     <child link="rod_front_link" />
   </joint>
@@ -84,7 +84,7 @@
   <joint name="rod_rear_joint" type="prismatic">
     <axis xyz="0 0 1"/>
     <limit effort="1000.0" velocity="0.5" lower="0" upper="${rod_h}"/>
-    <origin xyz="0 0.340 ${agv_height/2 - rod_h/2}" rpy="0 0 0" />
+    <origin xyz="-0.398 0 ${agv_height/2 - rod_h/2}" rpy="0 0 0" />
     <parent link="base_link"/>
     <child link="rod_rear_link" />
   </joint>
@@ -111,19 +111,19 @@
   <property name="BASE_DUMMY_R" value="0.225"/>
   <property name="drive_wheel_r" value="0.08" />
   <xacro:wheel name="l_wheel" parent="base_link" radius="${drive_wheel_r}" width="0.05">
-    <origin rpy="-6.123E-17 0 0" xyz="${BASE_R} 0.0 ${drive_wheel_r - agv_height/2 - hollow_h}" />
+    <origin rpy="-6.123E-17 0 0" xyz=" 0.0 ${BASE_R} ${drive_wheel_r - agv_height/2 - hollow_h}" />
   </xacro:wheel>
   <xacro:wheel name="r_wheel" parent="base_link" radius="${drive_wheel_r}" width="0.05">
-    <origin rpy="-6.123E-17 0 0" xyz="${BASE_R*-1} 0.0 ${drive_wheel_r - agv_height/2 - hollow_h}" />
+    <origin rpy="-6.123E-17 0 0" xyz=" 0.0 ${BASE_R*-1} ${drive_wheel_r - agv_height/2 - hollow_h}" />
   </xacro:wheel>
 
-  <xacro:dummy_wheel name="lf_wheel" parent="base_link" x_loc="${BASE_DUMMY_R}" y_loc="0.4275">
+  <xacro:dummy_wheel name="lf_wheel" parent="base_link" y_loc="${BASE_DUMMY_R}" x_loc="0.4275">
   </xacro:dummy_wheel>
-  <xacro:dummy_wheel name="rf_wheel" parent="base_link" x_loc="${BASE_DUMMY_R*-1}" y_loc="0.4275">
+  <xacro:dummy_wheel name="rf_wheel" parent="base_link" y_loc="${BASE_DUMMY_R*-1}" x_loc="0.4275">
   </xacro:dummy_wheel>
-  <xacro:dummy_wheel name="lr_wheel" parent="base_link" x_loc="${BASE_DUMMY_R}" y_loc="-0.42475">
+  <xacro:dummy_wheel name="lr_wheel" parent="base_link" y_loc="${BASE_DUMMY_R}" x_loc="-0.42475">
   </xacro:dummy_wheel>
-  <xacro:dummy_wheel name="rr_wheel" parent="base_link" x_loc="${BASE_DUMMY_R*-1}" y_loc="-0.42475">
+  <xacro:dummy_wheel name="rr_wheel" parent="base_link" y_loc="${BASE_DUMMY_R*-1}" x_loc="-0.42475">
   </xacro:dummy_wheel>
 
   <!-- Transmission -->
