@@ -13,6 +13,7 @@
       <updateRate>20.0</updateRate>
       <bodyName>imu_link</bodyName>
       <topicName>imu_data</topicName>
+      <frameId>gazebo_imu</frameId>
     </plugin>
   </gazebo>
 </robot>
